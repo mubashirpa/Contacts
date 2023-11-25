@@ -123,7 +123,6 @@ sqldelight {
     databases {
         create("ContactDatabase") {
             packageName.set("contacts.app")
-            generateAsync.set(true)
         }
     }
 }
