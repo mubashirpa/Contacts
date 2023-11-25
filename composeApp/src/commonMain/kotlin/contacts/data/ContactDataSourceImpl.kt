@@ -6,6 +6,7 @@ import app.cash.sqldelight.db.SqlDriver
 import contacts.app.ContactDatabase
 import contacts.domain.Contact
 import contacts.domain.ContactDataSource
+import core.data.DatabaseDriverFactory
 import core.data.ImageStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -16,11 +17,11 @@ import kotlinx.coroutines.supervisorScope
 import kotlinx.datetime.Clock
 
 class ContactDataSourceImpl(
-    driver: SqlDriver,
+    databaseDriverFactory: DatabaseDriverFactory,
     private val imageStorage: ImageStorage
 ) : ContactDataSource {
 
-    private val database = ContactDatabase(driver)
+    private val database = ContactDatabase(databaseDriverFactory.createDriver())
     private val queries = database.contactQueries
 
     override fun getContacts(): Flow<List<Contact>> {

@@ -11,7 +11,7 @@ actual class AppModule(
 ) {
     actual val contactDataSource: ContactDataSource by lazy {
         ContactDataSourceImpl(
-            driver = DatabaseDriverFactory(context).createDriver(),
+            databaseDriverFactory = DatabaseDriverFactory(context),
             imageStorage = ImageStorage(context)
         )
     }

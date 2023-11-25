@@ -8,7 +8,7 @@ import core.data.ImageStorage
 actual class AppModule {
     actual val contactDataSource: ContactDataSource by lazy {
         ContactDataSourceImpl(
-            driver = DatabaseDriverFactory().createDriver(),
+            databaseDriverFactory = DatabaseDriverFactory(),
             imageStorage = ImageStorage()
         )
     }
